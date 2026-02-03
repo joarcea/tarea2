@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ISW-512 - Tarea 2: CSS3 | UTN</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="header-fijo">
+    <div class="contenedor">
+      <h1>Universidad Técnica Nacional (UTN) — ISW-512</h1>
+      <nav>
+        <a href="#box-model">Box Model</a>
+        <a href="#display">Display</a>
+        <a href="#position">Position</a>
+        <a href="#float-clear">Float & Clear</a>
+        <a href="#overflow">Overflow</a>
+        <a href="#visibility">Visibility</a>
+        <a href="#zindex">Z-Index</a>
+        <a href="#flexbox">Flexbox</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <section class="intro">
+      <h2>Tarea 2: CSS3 — Demostraciones</h2>
+      <p>
+        Esta página acompaña la documentación oficial de la <strong>Tarea 2</strong> del curso <strong>ISW-512 Diseño de Aplicaciones Web</strong>.
+        Contiene ejemplos prácticos que demuestran el uso de <em>Box Model</em>, propiedades de visualización y posicionamiento, y el sistema de diseño <strong>Flexbox</strong>.
+      </p>
+      <p class="nota">Nota: se aplica <code>box-sizing: border-box</code> globalmente para simplificar cálculos de ancho/alto.</p>
+    </section>
+
+    <!-- 2.1 Box Model -->
+    <section id="box-model">
+      <h3>2.1 Modelo de Caja (Box Model)</h3>
+      <div class="grid-3">
+        <div class="caja box-content">
+          <h4>Content</h4>
+          <p>El contenido es el texto o medios dentro del elemento.</p>
+          <pre><code>width: 200px;
+height: 80px;</code></pre>
+        </div>
+        <div class="caja box-padding">
+          <h4>Padding</h4>
+          <p>Espacio interno entre el contenido y el borde.</p>
+          <pre><code>padding: 16px;</code></pre>
+        </div>
+        <div class="caja box-border">
+          <h4>Border</h4>
+          <p>Borde alrededor del padding y el contenido.</p>
+          <pre><code>border: 4px dashed #0078D4;</code></pre>
+        </div>
+      </div>
+      <div class="margen-demo">
+        <div class="caja box-margin">Margin (separación externa)</div>
+        <div class="caja box-margin">Otra caja</div>
+      </div>
+    </section>
+
+    <!-- Display -->
+    <section id="display">
+      <h3>2.1 / 2.2 — Display: Block vs Inline vs Inline-Block</h3>
+      <div class="display-demo">
+        <div class="bloque">Elemento de <strong>bloque</strong> (div)</div>
+        <span class="enlinea">Elemento <strong>en línea</strong> (span)</span>
+        <span class="enlinea">Otro en línea</span>
+        <div class="inline-block">Soy <strong>inline-block</strong></div>
+        <div class="inline-block">Acomodo horizontal</div>
+        <div class="oculto" title="display:none; no ocupa espacio">No deberías verme</div>
+      </div>
+    </section>
+
+    <!-- Position -->
+    <section id="position">
+      <h3>2.2.A Position: static, relative, absolute, fixed</h3>
+      <div class="posicion-contenedor">
+        <div class="pos static">static</div>
+        <div class="pos relative">relative
+          <div class="pos absolute">absolute (posicionada respecto a su contenedor relativo)</div>
+        </div>
+        <p class="nota">Desplázate para ver el banner <strong>fixed</strong> al pie.</p>
+      </div>
+      <div class="fixed-footer">Soy un elemento <strong>fixed</strong> adherido al borde inferior.</div>
+    </section>
+
+    <!-- Float & Clear -->
+    <section id="float-clear">
+      <h3>2.2.B Float & Clear</h3>
+      <div class="float-wrapper">
+        <div class="flotante izq">float: left</div>
+        <div class="flotante der">float: right</div>
+        <p>
+          El texto fluye alrededor de los elementos flotantes. Para evitar que el siguiente contenido se superponga, usamos
+          <code>clear: both</code> en un separador.
+        </p>
+        <div class="clearfix"></div>
+        <div class="post-float">Contenido posterior con <code>clear</code> aplicado.</div>
+      </div>
+    </section>
+
+    <!-- Overflow -->
+    <section id="overflow">
+      <h3>2.2.D Overflow</h3>
+      <div class="grid-4">
+        <div class="overflow-box visible">
+          <h5>visible</h5>
+          <p>Contenido largo que puede desbordar el contenedor y se sigue mostrando fuera de sus límites...</p>
+        </div>
+        <div class="overflow-box hidden">
+          <h5>hidden</h5>
+          <p>Contenido largo que será recortado si excede el tamaño del contenedor. No se muestran barras.</p>
+        </div>
+        <div class="overflow-box scroll">
+          <h5>scroll</h5>
+          <p>Contenido largo que mostrará barras de desplazamiento siempre.</p>
+        </div>
+        <div class="overflow-box auto">
+          <h5>auto</h5>
+          <p>Contenido largo que mostrará barras de desplazamiento solo si es necesario.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visibility -->
+    <section id="visibility">
+      <h3>2.2.E Visibility</h3>
+      <p><code>visibility: hidden</code> oculta el elemento pero conserva su espacio. En tablas, <code>collapse</code> puede colapsar filas/columnas.</p>
+      <table class="tabla-visibility">
+        <thead>
+          <tr><th>Columna A</th><th>Columna B</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Fila visible</td><td>Contenido</td></tr>
+          <tr class="fila-colapsada"><td>Fila con visibility: collapse</td><td>No visible, espacio colapsado (según soporte)</td></tr>
+          <tr class="fila-oculta"><td>Fila oculta</td><td>Oculto pero el espacio permanece</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Z-Index -->
+    <section id="zindex">
+      <h3>2.2.F Z-Index</h3>
+      <div class="z-canvas">
+        <div class="z-box z1">z-index: 1</div>
+        <div class="z-box z10">z-index: 10</div>
+        <div class="z-box z5">z-index: 5</div>
+      </div>
+    </section>
+
+    <!-- Flexbox -->
+    <section id="flexbox">
+      <h3>2.3 Flexbox</h3>
+      <h4>Contenedor (flex container)</h4>
+      <div class="flex-tabla">
+        <div><strong>flex-direction</strong>: row | row-reverse | column | column-reverse</div>
+        <div><strong>flex-wrap</strong>: nowrap | wrap | wrap-reverse</div>
+        <div><strong>flex-flow</strong>: <em>direction</em> <em>wrap</em></div>
+        <div><strong>justify-content</strong>: flex-start | center | space-between | space-around | space-evenly</div>
+        <div><strong>align-items</strong>: stretch | flex-start | center | flex-end | baseline</div>
+        <div><strong>align-content</strong>: stretch | flex-start | center | flex-end | space-between | space-around</div>
+      </div>
+
+      <div class="flex-demo contenedor-a">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+      </div>
+
+      <h4>Ítems (flex items)</h4>
+      <div class="flex-demo contenedor-b">
+        <div class="item grow2">grow=2</div>
+        <div class="item shrink0">shrink=0</div>
+        <div class="item basis200">basis=200px</div>
+        <div class="item flex123">flex: 1 1 120px</div>
+        <div class="item self-end">align-self: flex-end</div>
+      </div>
+
+      <h4>Responsive</h4>
+      <p>Con media queries cambiamos disposición y ajuste para pantallas pequeñas.</p>
+      <div class="flex-demo contenedor-responsive">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="contenedor">
+      <small>ISW-512 • Tarea 2: CSS3 • UTN • Autor: Eduardo Arce • Fecha: 02/02/2026</small>
+    </div>
+  </footer>
+</body>
+</html>
